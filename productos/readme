@@ -1,0 +1,66 @@
+# API REST de Productos
+
+Proyecto desarrollado en Java con Spring Boot para consultar productos almacenados en una base de datos H2 en memoria.
+
+El objetivo del proyecto es implementar una API REST utilizando una arquitectura organizada en capas:
+
+Controller → Service → Repository → Base de datos
+
+## Tecnologías utilizadas
+
+- Java 17
+- Spring Boot 3.5.16
+- Spring Web
+- Spring Data JPA
+- Hibernate
+- H2 Database
+- Maven
+
+## Entidad Producto
+
+La entidad `Producto` contiene los siguientes campos:
+
+| Campo | Tipo | Descripción |
+|------|------|-------------|
+| id | Long | Identificador autoincremental |
+| nombre | String | Nombre del producto |
+| descripcion | String | Descripción del producto |
+| precio | Double | Precio del producto |
+| stock | Integer | Cantidad disponible |
+| categoria | String | Categoría del producto |
+
+## Endpoints
+
+### Consultar todos los productos
+
+```http
+GET /api/productos
+
+http://localhost:8081/api/productos
+[
+  {
+    "id": 1,
+    "nombre": "Laptop HP",
+    "descripcion": "Laptop 15 pulgadas, 8GB RAM",
+    "precio": 2500.0,
+    "stock": 10,
+    "categoria": "Tecnologia"
+  },
+  {
+    "id": 2,
+    "nombre": "Mouse Logitech",
+    "descripcion": "Mouse inalambrico",
+    "precio": 45.0,
+    "stock": 50,
+    "categoria": "Tecnologia"
+  }
+]
+
+consulta por productos
+GET /api/productos/{id}
+
+manejo de errores
+http://localhost:8081/api/productos/999
+{
+  "error": "Producto no encontrado con id: 999"
+}
